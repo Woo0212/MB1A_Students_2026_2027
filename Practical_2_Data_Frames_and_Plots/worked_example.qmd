@@ -1,0 +1,32 @@
+---
+title: "worked_example.qmd"
+---
+
+library(gt)
+library(tidyverse)
+library(maps)
+bird_breeding_sites <- read_csv("data/breeding_site_locations.csv")
+gt(bird_breeding_sites)
+colnames(bird_breeding_sites)
+glimpse(bird_breeding_sites)
+nrow(bird_breeding_sites)
+ncol(bird_breeding_sites)
+print(nrow(bird_breeding_sites))
+print(ncol(bird_breeding_sites))
+print(dim(bird_breeding_sites))
+migration_data <- read_csv("data/migratory_connectivity_dataset.csv")
+gt(head(migration_data))
+glimpse(migration_data)
+
+bird_migration_selected <- migration_data |>
+select(Site, winterLongitude, winterLatitude, pslon, pslat, iblon, iblat, awestlon, awestlat) |>
+distinct() |>
+rename(Winter_Longitude = winterLongitude, Winter_Latitude = winterLatitude, Stopover_Longitude = pslon, Stopover_Latitude = pslat, Iberian_Longitude = iblon, Iberian_Latitude = iblat, Westmost_Longitude = awestlon, Westmost_Latitude = awestlat)
+
+gt(bird_migration_selected)
+
+bird_breeding_exc <- bird_breeding_selected |> filter(Site != "Spain")
+gt(bird_breeding_exc)
+
+bird_migration_exc <-bird_migration_selected |> filter(Site != "Spain")
+gt(head(bird_migration_exc))
