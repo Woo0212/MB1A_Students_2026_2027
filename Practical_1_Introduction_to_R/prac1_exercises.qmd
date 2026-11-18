@@ -2,6 +2,9 @@
 title: "prac1_exercises"
 ---
 
+library(tidyverse)
+library(gt)
+
 round(3.14159)
 
 round(3.14159, digits = 2)
@@ -28,3 +31,29 @@ n_before_2 <- 8123
 
 n_after_1 <- 1432
 n_after_2 <- 7543
+
+cell_id <- c(cell_id_1, cell_id_2)
+treated <- c(treated_1, treated_2)
+n_before <- c(n_after_1, n_after_2)
+n_after <- c(n_after_1, n_after_2)
+
+all_my_pets <- c("dog", "horse", "guinea pig", "chicken", "cat")
+my_fourth_pet <- (all_my_pets[4])
+print (my_fourth_pet)
+
+radiation_data <- tibble(
+cell_ID = c("CX1", "CX2"),
+treated = c(TRUE, FALSE),
+num_cells_before = c(5415, 8123),
+num_cells_after = c(1432, 7543)
+)
+
+gt (radiation_data)
+
+df <- tibble(
+  cell_ID = cell_id,
+  treated = treated,
+  num_cells_before = n_before,
+  num_cells_after = n_after
+)
+gt(df)

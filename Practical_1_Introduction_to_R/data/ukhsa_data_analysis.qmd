@@ -1,0 +1,23 @@
+---
+title: "ukhsa_data_analysis"
+---
+
+library(tidyverse)
+library(gt)
+
+mpox <- read_csv("data/ukhsa-chart-download.csv")
+gt(head(mpox))
+
+I selected the number of measles cases in England by month
+
+measles <- read_csv("data/ukhsa-chart-download.csv")
+ggplot (measles)
+ggplot (measles, aes(
+x = date,
+y = metric_value
+)) +
+geom_line(colour = "red")+
+xlab("Date")+ 
+ylab("Number of Cases")+
+ggtitle("Number of measles cases")
+
